@@ -1,0 +1,30 @@
+name: Build and Release Flutter app
+
+on:
+  push:
+    branches:
+      - "master"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          flutter-version: "3.7.0"
+
+      - name: Build Apk
+        run: flutter build apk
+        env:
+          FLUTTER_STAGE: "production"
+
+      - name: Deploy APK to GitHub Releases
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-release.apk
+          path: build/app/outputs/apk/release/app-release.apk
