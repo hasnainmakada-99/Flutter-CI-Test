@@ -14,5 +14,10 @@ pipeline{
             }
         }
         
+        stage('Archive'){
+            steps{
+                archivedArtifacts artifacts: 'build/app/outputs/apk/release/app-release.apk'
+            }
+        }
     }
 }
