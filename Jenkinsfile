@@ -1,8 +1,6 @@
 pipeline{
     agent any
-    options{
-        skipStageAfterUnstable()
-    }
+    
     stages{
         stage('Clone Repository'){
             steps{
@@ -15,9 +13,6 @@ pipeline{
                 sh 'flutter build apk'  
             }
         }
-
         
-        
-    
     }
 }
