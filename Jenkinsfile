@@ -20,18 +20,10 @@ pipeline{
         {
             steps
             {
-                archiveArtifacts artifacts: 'build/app/outputs/apk/release/app-release.apk', fingerprint: true, allowEmptyArtifacts: true, onlyIfSuccessful: true,
+                archiveArtifacts artifacts: 'build/app/outputs/apk/release/app-release.apk',
                 
             }
-            post{
-                success{
-                    echo "====++++Artifacts archived executed successfully++++===="
-                }
-                failure{
-                    echo "====++++Artifacts archived execution failed++++===="
-                }
         
-            }
         }
     
     }
