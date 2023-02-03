@@ -1,5 +1,5 @@
 pipeline{
-    agent any
+    agent {label: 'flutter'}
     
     stages{
         stage('Clone Repository'){
